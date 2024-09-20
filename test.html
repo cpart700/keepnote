@@ -1,0 +1,134 @@
+
+<!-- //star code -->
+<a href="endpoint/star.php?id=<?php echo $noteID ?>&action=<?php echo $starred == 1 ? 'unstar' : 'star' ?>"><?php echo $starred == 1 ? 'Unstar' : 'Star' ?></a>
+
+<!-- //star code that says starred successful in another page -->
+     <a href="endpoint/star.php?id=<?php echo $noteID ?>&action=<?php echo $starred == 1 ? 'unstar' : 'star' ?>">
+                                    <?php if ($starred == 1): ?>
+                                        <i class="fas fa-star"></i> <!-- Use solid star icon if starred -->
+                                    <?php else: ?>
+                                        <i class="far fa-star"></i> <!-- Use regular star icon if not starred -->
+                                    <?php endif; ?>
+                                </a>
+
+
+<li class="list-group-item mt-2">
+                                    <div class="btn-group float-right">
+                                        <a href="endpoint/update_note.php?edit=<?php echo $noteID ?>"><button type="button" class="btn btn-secondary" title="Show"><i class="fa fa-pencil"></i></button></a>
+                                        <button onclick="delete_note('<?php echo $noteID ?>')" type="button" class="btn btn-secondary" title="Remove"><i class="fa fa-trash"></i></button>
+                                     <!-- Star icon/button -->
+                                        <button onclick="toggle_star('<?php echo $noteID ?>')" type="button" class="btn btn-secondary" title="Star"><i class="fa fa-star"></i></button>
+                                    </div>  
+                                    <h3 style="text-transform:uppercase;"><b><?php echo $noteTitle ?></b></h3>
+                                    <p class="note-content"><?php echo $noteContent ?></p>
+                                    <small class="block text-muted text-info">Created: <i class="fa fa-clock-o text-info"></i> <?php echo $formattedDateTime ?></small>
+                                </li>
+
+
+
+
+                                 <!-- <a href="endpoint/update_note.php?id=<?php echo $noteID ?>" class="edit-btn"><i class="fas fa-edit"></i></a>  -->
+                                 <a href="endpoint/update_note.php?id=<?php echo $row['tbl_notes_id']; ?>" class="edit-btn"><i class="fas fa-edit"></i></a>
+
+
+
+
+                                 <nav class="navbar">
+        <a class="navbar-brand" href="#">Notes App</a>
+
+        <ul class="navbar-nav navigate">
+            
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="starred_notes.php">Favorites</a>
+            </li>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="account.php">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php" onclick="return confirmLogout()">Log-Out</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    // // // JQUERY FOR BLANK NOTE and ADDING NOTE
+// function isWhitespace(str) {
+//     return !str.trim();
+// }
+
+// // Function to validate the form before submission
+// function validateForm() {
+//     // Get the values of the note title and content fields
+//     var noteTitle = $('#noteTitle').val();
+//     var noteContent = $('#note').val();
+
+//     if (isWhitespace(noteTitle) || isWhitespace(noteContent)) {
+//         $('#error-message').text("Note title or content cannot be blank.").show();
+//         return false; // Prevent form submission
+//     }
+//     return true; // Allow form submission
+// }
+
+// // Hide error message when the fields are changed
+// $('#noteTitle, #note').on('input', function () {
+//     $('#error-message').hide();
+// });
+
+// // Intercept the form submission
+// $(document).ready(function () {
+//     $('form').submit(function (event) {
+//         // Prevent the default form submission
+//         event.preventDefault();
+
+//         // Perform any client-side validation here
+//         if (validateForm()) {
+//             // Submit the form via AJAX
+//             $.ajax({
+//                 type: $(this).attr('method'),
+//                 url: $(this).attr('action'),
+//                 data: $(this).serialize(),
+//                 success: function (response) {
+//                     // Clear form fields
+//                     $('form')[0].reset();
+//                     // Display success message
+//                     $('#success-message').text('Note successfully Added!!!').show();
+//                     // Wait for 1.5 second before reloading the page
+//                     setTimeout(function () {
+//                         location.reload();
+//                     }, 1500); // 1500 milliseconds = 1.5 second
+//                 },
+//                 error: function (xhr, status, error) {
+//                     // Handle error if necessary
+//                     console.error(xhr.responseText);
+//                 }
+//             });
+//         }
+//     });
+// });
+
+
+
+// logout alert
+// function confirmLogout(event) {
+//     event.preventDefault(); // Prevent the default action of the link
+
+//     Swal.fire({
+//         title: 'Are you sure?',
+//         text: "You will be logged out!",
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: '#3085d6',
+//         cancelButtonColor: '#d33',
+//         confirmButtonText: 'Yes, log me out!'
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             // Proceed with the log-out action by navigating to the logout page
+//             window.location.href = event.target.href;
+//         }
+//     });
+// }
