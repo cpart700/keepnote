@@ -1,16 +1,19 @@
 <?php
+function connectDB()
+{
+    $host = getenv('DB_HOST'); 
+    $dbname = getenv('DB_DATABASE');
+    $username = getenv('DB_USERNAME');
+    $password = getenv('DB_PASSWORD');
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "take_note_db";
+    try {
+        $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "";
-} catch (PDOException $e) {
-    echo "Failed " . $e->getMessage();
+    return null;
 }
-
-?>
+?>>
