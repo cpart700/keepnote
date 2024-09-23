@@ -30,8 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         // Redirect back to the main page after adding the note
-        header("location: http://localhost/keepnote/");
-        exit(); // Exit to prevent further execution
+                 echo '<script type="text/javascript">
+    window.location.reload();
+</script>';
+// Exit to prevent further execution
     } catch (PDOException $e) {
         // Handle any errors that occur during the database operation
         echo "Error: " . $e->getMessage();
