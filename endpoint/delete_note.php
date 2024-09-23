@@ -10,16 +10,20 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['delete'])) {
 
     if ($stmt->execute()) {
         // Redirect back to the update.php page with a success message
-        header("Location: http://localhost/keepnote/");
-        exit();
+        echo '<script type="text/javascript">
+    window.location.href = "../index.php";
+</script>';
     } else {
         // Redirect back to the update.php page with an error message
-        header("Location: http://localhost/keepnote/");
-        exit();
+        echo '<script type="text/javascript">
+    window.location.href = "../index.php";
+</script>';
     }
 } else {
     // Redirect to the update.php page if accessed directly or without a valid note ID
-    header("Location: http://localhost/keepnote/");
+      echo '<script type="text/javascript">
+    window.location.href = "../index.php";
+</script>';
     exit();
 }
 ?>
