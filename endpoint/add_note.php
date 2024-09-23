@@ -30,9 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         // Redirect back to the main page after adding the note
-                 echo '<script type="text/javascript">
-    window.location.reload();
+echo '<script type="text/javascript">
+    window.location.href = "index.php";
 </script>';
+
 // Exit to prevent further execution
     } catch (PDOException $e) {
         // Handle any errors that occur during the database operation
