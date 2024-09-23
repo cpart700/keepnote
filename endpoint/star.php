@@ -15,8 +15,9 @@ if ($conn) {
         $sql = "UPDATE `tbl_notes` SET `starred` = 0 WHERE `tbl_notes_id` = :noteID";
     } else {
         // Invalid action, handle error or redirect back to original page
-        header("Location: index.php");
-        exit;
+        echo '<script type="text/javascript">
+    window.location.href = "../index.php";
+</script>';
     }
 
     // Prepare and execute the SQL statement
@@ -25,11 +26,13 @@ if ($conn) {
     $stmt->execute();
 
     // Redirect back to the original page after processing the action
-    header("Location: {$_SERVER['HTTP_REFERER']}");
-    exit;
+     echo '<script type="text/javascript">
+    window.location.href = "../index.php";
+</script>';
 } else {
     // Connection failed, handle the error or redirect back to original page
-    header("Location: index.php");
-    exit;
+      echo '<script type="text/javascript">
+    window.location.href = "../index.php";
+</script>';
 }
 ?>
