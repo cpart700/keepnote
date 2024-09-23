@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ('conn/conn.php');
 ?>
 
@@ -25,7 +26,7 @@ include ('conn/conn.php');
         <ul class="navbar-nav navigate">
             <?php
             // Start or resume a session
-            session_start();
+            
 
             // Check if user is logged in
             if (isset($_SESSION['alogin'])) {
